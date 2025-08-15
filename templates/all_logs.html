@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}All Logs — LogSecure Analyzer{% endblock %}
+{% block content %}
+<a href="{{ url_for('index') }}" class="btn btn-secondary mb-3">Back</a>
+<h2>All Logs</h2>
+<a href="{{ url_for('download_csv') }}" class="btn btn-success mb-2">Download CSV</a>
+
+<table id="logsTable" class="display table table-bordered table-striped shadow-sm">
+  <thead>
+    <tr>
+      <th>IP</th><th>Timestamp</th><th>Method</th><th>Path</th><th>Status</th>
+      <th>Size</th><th>UserAgent</th><th>Risk Level</th><th>Score</th>
+      <th>Total Requests</th><th>Total Errors</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row in logs %}
+    <tr {% if row['status']|int >= 400 %}class="table-danger"{% endif %}>
+      <td>{{ row['ip'] }}</td>
+      <td>{{ row['timestamp'] }}</td>
+      <td>{{ row['method'] }}</td>
+      <td>{{ row['path'] }}</td>
+      <td>{{ row['status'] }}</td>
+      <td>{{ row['size'] }}</td>
+      <td>{{ row['useragent'] }}</td>
+      <td>{{ row['Risk_Level'] }}</td>
+      <td>{{ row['Score'] }}</td>
+      <td>{{ row['Total_Requests'] }}</td>
+      <td>{{ row['Total_Errors'] }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<script>
+$(function () {
+  $('#logsTable').DataTable({
+    order: [[1, "desc"]],
+    pageLength: 25
+  });
+});
+</script>
+{% endblock %}

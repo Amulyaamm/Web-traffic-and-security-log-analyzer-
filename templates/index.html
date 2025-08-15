@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Your Uploads — LogSecure Analyzer{% endblock %}
+{% block content %}
+
+<h2 class="mb-3">Upload Log File</h2>
+<form method="POST" enctype="multipart/form-data" class="d-flex gap-2 align-items-center">
+  <input type="file" name="logfile" required class="form-control">
+  <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<hr class="my-4">
+
+<h3>Uploaded Files</h3>
+<table class="table table-hover table-bordered align-middle shadow-sm">
+  <thead class="table-light">
+    <tr><th>Filename</th><th>Upload Time</th><th class="text-end">Actions</th></tr>
+  </thead>
+  <tbody>
+  {% for file in uploads %}
+    <tr>
+      <td>{{ file[1] }}</td>
+      <td>{{ file[2] }}</td>
+      <td class="text-end">
+        <a href="{{ url_for('dashboard', filename=file[1]) }}" class="btn btn-sm btn-info">View</a>
+        <a href="{{ url_for('delete_file', filename=file[1]) }}" class="btn btn-sm btn-danger"
+           onclick="return confirm('Delete {{ file[1] }}?')">Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+  {% if uploads|length == 0 %}
+    <tr><td colspan="3" class="text-center text-muted">No files yet. Upload one above.</td></tr>
+  {% endif %}
+  </tbody>
+</table>
+
+{% endblock %}

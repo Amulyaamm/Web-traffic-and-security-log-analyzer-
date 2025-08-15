@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}LogSecure Analyzer — Modern Log Intelligence{% endblock %}
+{% block content %}
+
+<section class="hero rounded-4 p-5 mb-4 text-white">
+  <div class="row align-items-center">
+    <div class="col-lg-7">
+      <h1 class="display-5 fw-bold">Log Analysis. Free to start. Powerful forever.</h1>
+      <p class="lead mt-3">
+        Collect, search, and visualize your web traffic & security logs.
+        Detect suspicious activity with rule-based scoring and export rich PDF reports.
+      </p>
+      <div class="mt-4 d-flex gap-2">
+        <a class="btn btn-primary btn-lg shadow" href="{{ url_for('register') }}">Get Started — Free</a>
+        <a class="btn btn-outline-light btn-lg" href="{{ url_for('login') }}">Sign In</a>
+      </div>
+    </div>
+    <div class="col-lg-5 mt-4 mt-lg-0">
+      <div class="preview shadow-lg rounded-4 overflow-hidden">
+        <img src="{{ url_for('static', filename='hero_preview.png') }}" class="w-100" alt="dashboard preview">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="py-5">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Upload & Parse</h5>
+          <p class="card-text">Upload access logs (Apache/Nginx). We parse IP, method, path, status, and more into SQLite.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Analyze & Visualize</h5>
+          <p class="card-text">See top IPs, pages, errors, and request trends. Built-in charts and DataTables.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Report & Share</h5>
+          <p class="card-text">Export CSV and beautiful PDF reports for weekly reviews and audits.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

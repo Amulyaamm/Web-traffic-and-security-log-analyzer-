@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Report</title>
+<style>
+table {width:100%; border-collapse: collapse; font-size:12px;}
+th, td {border:1px solid black; padding:3px;}
+th {background:#ddd;}
+h2, h3 {margin: 6px 0;}
+</style>
+</head>
+<body>
+<h2>Report: {{ filename }}</h2>
+<p>Total Requests: {{ total_requests }} | Total Errors: {{ total_errors }}</p>
+
+<h3>Top IPs</h3>
+<table>{% for ip,count in top_ips.items() %}<tr><td>{{ ip }}</td><td>{{ count }}</td></tr>{% endfor %}</table>
+
+<h3>Top Pages</h3>
+<table>{% for path,count in top_pages.items() %}<tr><td>{{ path }}</td><td>{{ count }}</td></tr>{% endfor %}</table>
+
+<h3>Top Errors</h3>
+<table>{% for path,count in top_errors.items() %}<tr><td>{{ path }}</td><td>{{ count }}</td></tr>{% endfor %}</table>
+
+<h3>Charts</h3>
+<img src="{{ pie_path }}" width="300">
+<img src="{{ line_path }}" width="500">
+</body>
+</html>
