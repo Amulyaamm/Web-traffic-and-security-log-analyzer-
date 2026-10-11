@@ -1,0 +1,9 @@
+:root{
+  --hero-bg: #0f172a; /* slate-900 */
+}
+body { font-family: 'Inter', sans-serif; background:#f6f7fb; }
+.bg-body { background:#f6f7fb; }
+.table-danger { background:#f8d7da !important; }
+.card { border-radius: 14px; }
+.hero { background: var(--hero-bg); }
+.preview img { display:block; }
